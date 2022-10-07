@@ -14,10 +14,8 @@ def pregunta_01():
     En este punto se realiza la lectura de conjuntos de datos.
     Complete el código presentado a continuación.
     """
-    # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
     df = pd.read_csv('gm_2008_region.csv')
 
-    # Asigne la columna "life" a `y` y la columna "fertility" a `X`
     y = df['life'].values
     X = df['fertility'].values
 
@@ -46,10 +44,7 @@ def pregunta_02():
     Complete el código presentado a continuación.
     """
 
-    # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
     df = pd.read_csv('gm_2008_region.csv')
-
-    # Imprima las dimensiones del DataFrame
     print(df.shape)
 
     # Imprima la correlación entre las columnas `life` y `fertility` con 4 decimales.
@@ -79,10 +74,7 @@ def pregunta_03():
     Entrenamiento del modelo sobre todo el conjunto de datos.
     Complete el código presentado a continuación.
     """
-    import pandas as pd
-    import numpy as np
-        
-    # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
+
     df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne a la variable los valores de la columna `fertility`
@@ -125,27 +117,23 @@ def pregunta_04():
     Particionamiento del conjunto de datos usando train_test_split.
     Complete el código presentado a continuación.
     """
-    import pandas as pd
-    import numpy as np
 
     from sklearn.linear_model import LinearRegression
     from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import mean_squared_error
 
-    # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
     df = pd.read_csv('gm_2008_region.csv')
 
     X_fertility = df['fertility'].values.reshape(139,1)
     y_life = df['life'].values.reshape(139,1)
 
-    # Train % Test. La semilla del generador de números aleatorios es 53. 
-    # El tamaño de la muestra de entrenamiento es del 80%
+    # Train & Test. 
     (X_train, X_test, y_train, y_test,) = train_test_split(
         X_fertility,
         y_life,
-        test_size=0.2,
-        random_state=53,
+        test_size=0.2, # El tamaño de la muestra de entrenamiento es del 80%
+        random_state=53, # La semilla del generador de números aleatorios es 53. 
     )
 
     # Cree una instancia del modelo de regresión lineal
